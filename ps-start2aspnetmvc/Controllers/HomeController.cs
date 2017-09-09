@@ -26,5 +26,8 @@ namespace ps_start2aspnetmvc.Controllers
 
             return View();
         }
+
+        public ActionResult Test() => 
+            throw new InvalidOperationException("This feature is not implemented");
     }
 }

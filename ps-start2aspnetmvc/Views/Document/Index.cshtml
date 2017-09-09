@@ -1,0 +1,50 @@
+﻿@using ps_start2aspnetmvc.Models
+@model IEnumerable<Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of courses</h2>
+
+@if (Model.Any())
+{
+    <table>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.id</td>
+                <td>@course.Title</td>
+                <td>
+                    <table class="table-condensed">
+                        @foreach (var module in course.Modules)
+                        {
+                            <tr>
+                                <td>@module.Title</td>
+                                <td>
+                                    <table class="table-condensed">
+                                        @foreach (var clip in module.Clips)
+                                        {
+                                            <tr>
+                                                <td>@clip.Name</td>
+                                                <td>@clip.Length</td>
+                                            </tr>
+                                        }
+                                    </table>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <div>No courses to display.</div>
+    <form method="post" action="@Url.Action("Insert")">
+        @Html.AntiForgeryToken()
+        <input class="btn btn-primary" type="submit" name="Insert" value="Insert Sample Data"/>
+    </form>
+}

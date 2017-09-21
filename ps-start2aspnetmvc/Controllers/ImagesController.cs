@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ps_start2aspnetmvc.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ImagesController : Controller
     {
         ImageStore imageStore = new ImageStore();
